@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.xclick.web.restful.security.rest.crud.mapper.UserMapper">
+	<insert id="create" parameterType="cn.xclick.web.restful.security.rest.crud.model.User">
+		insert into `user`
+			(name)
+			values
+			(#{name}) ;
+	</insert>
+	<delete id="delete" parameterType="int">
+		delete from `user`
+			where id = #{id} ;	
+	</delete>
+	<select id="getAll" resultType="cn.xclick.web.restful.security.rest.crud.model.User">
+		select * from `user`
+			where 1 = 1 
+			limit #{offset}, #{count}
+			;			
+	</select>				
+	<select id="get" parameterType="cn.xclick.web.restful.security.rest.crud.model.User"
+				resultType="cn.xclick.web.restful.security.rest.crud.model.User">
+		select * from `user`
+			where 1 = 1 
+			<if test="id != null">
+				and id = #{id}
+			</if>
+			<if test="name !=null">
+				and name = #{name}
+			</if>
+			;
+	</select>
+	<update id="update" parameterType="cn.xclick.web.restful.security.rest.crud.model.User">
+		update `user` 
+			set name = #{name}
+			where id = #{id} ; 
+	</update>
+</mapper>
+		
