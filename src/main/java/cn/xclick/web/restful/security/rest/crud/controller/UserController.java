@@ -36,7 +36,7 @@ public class UserController {
         if (users == null || users.isEmpty()){
             return new ResponseEntity<List<User>>(HttpStatus.NO_CONTENT);
         }
-
+        
         return new ResponseEntity<List<User>>(users, HttpStatus.OK);
     }
 	
